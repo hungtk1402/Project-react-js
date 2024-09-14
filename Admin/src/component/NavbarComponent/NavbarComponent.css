@@ -1,0 +1,46 @@
+.admin-tab ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-tab ul li {
+    margin-bottom: 15px;
+}
+
+.admin-tab ul li .nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1b2559;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.admin-tab ul li .nav-link:hover {
+    background-color: #e7f1ff;
+    color: #007bff;
+}
+
+.admin-tab ul li .nav-link.active {
+    background-color: #e7f1ff;
+    color: #007bff;
+    font-weight: 600;
+}
+
+.admin-tab ul li .nav-link i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .admin-tab {
+        width: 100%;
+        padding: 10px;
+    }
+}

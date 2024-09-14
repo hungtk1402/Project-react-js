@@ -1,0 +1,18 @@
+.dropdown-menu{
+    /* background-color: red;  */
+    text-align: center;
+}
+
+.nav-link{
+    color: black;
+}
+.navbar-brand{
+    color: black;
+}
+
+.dropdown{
+    cursor: pointer;
+}
+.menu_user{
+    text-align: left;
+}

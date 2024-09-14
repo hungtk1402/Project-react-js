@@ -1,0 +1,39 @@
+.contact-section {
+    padding: 20px;
+    margin-bottom: 150px;
+}
+
+
+
+.contact-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info h4 {
+    font-weight: bold;
+}
+
+.contact-info p {
+    margin-bottom: 5px;
+}
+
+.contactInput {
+    margin-bottom: 20px;
+}
+
+.btn-send {
+    background-color: black;
+    color: white;
+    border-radius: 0;
+    padding: 10px 20px;
+}
+
+.info-heading {
+    color: red;
+    font-weight: bold;
+}

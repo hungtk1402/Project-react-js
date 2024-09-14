@@ -1,0 +1,96 @@
+/* Sidebar Styles */
+.list-group-item {
+    border: none;
+}
+
+.list-group-item.active {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* .list-group-item:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+  } */
+
+/* Product Card Styles */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img-wrapper {
+    /* height: 200px; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-top {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.card {
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Ensure all cards are the same height */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.list-group-item {
+    text-align: left;
+}
+
+.spinner-border {
+    justify-content: center;
+}
+
+
+.sort-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.sort-options select {
+    padding: 8px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #495057;
+    background-color: #fff;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    /* Tạo hiệu ứng shadow nhẹ */
+    /* transition: box-shadow 0.2s ease; */
+    width: auto;
+}
+
+.sort-options select:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+
+
+
+

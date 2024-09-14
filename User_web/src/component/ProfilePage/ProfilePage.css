@@ -1,0 +1,120 @@
+.profile-section {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+
+.profile-tab ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-tab ul li {
+    margin-bottom: 15px;
+}
+
+.profile-tab ul li button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1b2559;
+    /* Màu chữ xanh đậm */
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-tab ul li button:hover {
+    background-color: #e7f1ff;
+    /* Màu nền khi hover */
+    color: #007bff;
+    /* Màu chữ khi hover */
+}
+
+.profile-tab ul li button.active {
+    background-color: #e7f1ff;
+    color: #007bff;
+    font-weight: 600;
+}
+
+.profile-tab ul li button i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Responsive chỉnh kích thước khi màn hình nhỏ */
+@media (max-width: 768px) {
+    .profile-tab {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+.profileInput {
+    background-color: #f7f9fc;
+    border: 1px solid #dce1e9;
+    border-radius: 5px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #5a5a5a;
+}
+
+.btn-danger {
+    background-color: #ff4d4d;
+    border-color: #ff4d4d;
+}
+
+
+
+.changePassword {
+    height: 550px;
+}
+
+@media (max-width: 768px) {
+    .changePassword {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
