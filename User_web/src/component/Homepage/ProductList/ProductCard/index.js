@@ -9,10 +9,11 @@ const ProductCard = ({ product }) => {
     const formattedPrice = new Intl.NumberFormat('vi-VN').format(product.price);
 
     return (
-        <div className="col-md-3 mb-4">
+        <div className="col-md-3 mb-4" >
             <div
-                className="card d-flex flex-column h-100"
+                className="card cardHomePage d-flex flex-column h-100"
                 onClick={handleClick}
+                style={{ cursor: 'pointer' }}
             >
                 <img
                     src={product.img1}

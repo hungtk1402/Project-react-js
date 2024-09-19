@@ -1,42 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ProductContext } from '../Context/ProductContext';
+import './ProductManagement.css'
 import HeaderComponent from "../HeaderAndFooter/HeaderComponent"
+import FooterComponent from '../HeaderAndFooter/FooterComponent';
 import NavbarComponent from "../NavbarComponent"
 import SearchBar from "../SearchBar"
-import './ProductManagement.css'
 import ListProduct from "./ListProduct"
+import AddModal from '../Modal/AddModal';
+
 const ProductManagenment = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const { products, updateProduct, deleteProduct, addProduct } = useContext(ProductContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
-        fetchProducts();
-    }, []);
-
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch("https://firebasestorage.googleapis.com/v0/b/funix-subtitle.appspot.com/o/Boutique_products.json?alt=media&token=dc67a5ea-e3e0-479e-9eaf-5e01bcd09c74");
-            const data = await response.json();
-            setProducts(data);
-            setFilteredProducts(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("Error fetching products:", error);
-            setLoading(false);
+        if (products.length > 0) {
+            setFilteredProducts(products);  // lấy thông tin sản phẩm sau khi việc tải hoàn tất
+            setLoading(false)
         }
-    };
+    }, [products]);
 
 
-    // Hàm cập nhật sản phẩm
-    const handleProductUpdate = (updatedProduct) => {
-        const updatedProducts = products.map(product =>
-            product._id.$oid === updatedProduct._id.$oid ? updatedProduct : product
-        );
-        setProducts(updatedProducts);
-        setFilteredProducts(updatedProducts); // Cập nhật cả danh sách đã lọc
-    };
-    
     // Hàm xử lý tìm kiếm sản phẩm
     const handleSearch = (searchTerm) => {
         if (searchTerm === "") {
@@ -49,6 +35,14 @@ const ProductManagenment = () => {
         }
     };
 
+
+    // Xử lý thêm sản phẩm mới
+    const handleAddProduct = (newProduct) => {
+        // Gán một ID cho các sản phẩm mới
+        newProduct._id = { $oid: (Math.random() * 100000).toFixed(0) };
+        addProduct(newProduct);
+    };
+
     return (
         <>
             <HeaderComponent></HeaderComponent>
@@ -59,22 +53,29 @@ const ProductManagenment = () => {
                 <div className="col-sm-10">
                     <div className='container'>
                         <h2 className="text-center mb-4">Product management</h2>
-                        <SearchBar
-                            onSearch={handleSearch}
-                            placeholder="Search product..."
-                        />
+                        <SearchBar onSearch={handleSearch} placeholder="Search product..." />
+                        <div className='add_product'>
+                            <button className="btn btn_add mb-4" onClick={() => setShowAddModal(true)} >
+                                Add product
+                            </button>
+                        </div>
                         {loading ? (
                             <div className='spinner-container'>
                                 <div className='spinner-border'></div>
                             </div>
                         ) : (
-                            <ListProduct products={filteredProducts} onUpdate={handleProductUpdate} />
+                            <ListProduct products={filteredProducts} onUpdate={updateProduct} onDelete={deleteProduct} />
                         )}
                     </div>
                 </div>
             </div>
+            <FooterComponent></FooterComponent>
+            <AddModal
+                show={showAddModal}
+                handleClose={() => setShowAddModal(false)}
+                onAddProduct={handleAddProduct}
+            />
         </>
-
     )
 }
 

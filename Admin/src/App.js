@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { AdminContext } from './component/Context';
+import { AdminContext} from './component/Context/AdminContext'
 import SignInAdmin from './component/SigninAdmin/index'
 import SignUpAdmin from './component/SignUpAdmin/index'
 import DashboardPage from './component/DashboardPage/index'

@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
-import { AdminContext } from "../../../Context";
+import { AdminContext } from "../../../Context/AdminContext";
 
 const AdminDropdown = ({ setIsAuthenticated }) => {
     const { admin, logout } = useContext(AdminContext);

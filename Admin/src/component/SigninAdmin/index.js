@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AdminContext } from '../Context';
+import { AdminContext } from '../Context/AdminContext';
 import { Link } from 'react-router-dom';
 
 

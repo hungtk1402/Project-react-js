@@ -33,16 +33,7 @@ const ProductDetail = () => {
             });
     }, [productId]);
 
-    if (loading) {
-        return (
-            <div className='spinner-container'>
-                <div className='spinner-border'></div>
-            </div>);
-    }
-
-    if (!product) {
-        return <div>Product not found</div>;
-    }
+   
 
     // Hàm để xử lý việc hiển thị mô tả
     const toggleDescription = () => {
@@ -58,7 +49,11 @@ const ProductDetail = () => {
     return (
         <div className="container-fluid">
             <HeaderComponent />
-            <div className='container mb-4'>
+            {loading ? (
+                <div className='spinner-container'>
+                    <div className='spinner-border'></div>
+                </div>
+            ) : (<div className='container mb-4'>
                 <div className='row'>
                     <div className='col-md-6'>
                         <ImageGallery
@@ -93,7 +88,7 @@ const ProductDetail = () => {
                     <h4>Related Products</h4>
                     <CardGirdShopPage products={relatedProducts} />
                 </div>
-            </div>
+            </div>)}
             <FooterComponent />
         </div>
     );

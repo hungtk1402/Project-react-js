@@ -135,3 +135,17 @@ button.btn-dark {
     border: none;
     padding: 10px 20px;
 }
+
+/* Product card */
+.cardHomePage{
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardHomePage:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
