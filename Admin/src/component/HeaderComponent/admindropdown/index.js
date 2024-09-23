@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
-import { AdminContext } from "../../../Context/AdminContext";
+import { AdminContext } from '../../Context/AdminContext'
 
 const AdminDropdown = ({ setIsAuthenticated }) => {
     const { admin, logout } = useContext(AdminContext);
@@ -36,8 +36,11 @@ const AdminDropdown = ({ setIsAuthenticated }) => {
                     className="btn dropdown-toggle dropdown-toggle-split"
                     data-toggle="dropdown"
                 />
-                <div className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
-                    <div className="btn" style={{ color: "white" }} onClick={logout}>Logout</div>
+                <div className={`menu_admin dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
+                    <div className="btn" style={{ color: "white" }} onClick={logout}>
+                        <span className="fas fa-sign-out-alt p-2"></span>
+                        Logout
+                    </div>
                 </div>
             </div>
         </div>

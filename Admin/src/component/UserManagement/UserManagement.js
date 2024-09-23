@@ -1,9 +1,7 @@
 import { useState } from "react";
-import HeaderComponent from "../HeaderAndFooter/HeaderComponent";
-import FooterComponent from "../HeaderAndFooter/FooterComponent";
 import SearchBar from "../SearchBar";
 import UserTable from "./UserTable";
-import NavbarComponent from "../NavbarComponent";
+
 
 const UserManagement = ({ setIsAuthenticated }) => {
     // Fake dữ liệu người dùng
@@ -41,30 +39,19 @@ const UserManagement = ({ setIsAuthenticated }) => {
 
     return (
         <>
-            <HeaderComponent ></HeaderComponent>
-            <div className="user_tab">
-                <div className="row">
-                    <div className="col-sm-2">
-                        <NavbarComponent></NavbarComponent>
-                    </div>
-                    <div className="col-sm-10">
-                        <div className="container">
-                            <h2 className="text-center mb-4">User Management</h2>
-                            <SearchBar
-                                onSearch={handleSearch}
-                                placeholder="Search by full name or email..."
-                            />
-    
-                            <UserTable
-                                users={filteredUsers}
-                                onDelete={deleteUser}
-                                onTogglePassword={togglePasswordVisibility}
-                            />
-                        </div>
-                    </div>
-                </div>
+            <div className="container">
+                <h2 className="text-center mb-4">User Management</h2>
+                <SearchBar
+                    onSearch={handleSearch}
+                    placeholder="Search by full name or email..."
+                />
+
+                <UserTable
+                    users={filteredUsers}
+                    onDelete={deleteUser}
+                    onTogglePassword={togglePasswordVisibility}
+                />
             </div>
-            <FooterComponent></FooterComponent>
         </>
     );
 };

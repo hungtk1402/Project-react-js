@@ -1,0 +1,26 @@
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.status-pending {
+    background-color: #ffcc00 !important; 
+    color: white;
+}
+
+.status-cancelled {
+    background-color: #ff0000 !important; 
+    color: white;
+}
+
+.status-completed {
+    background-color: #28a745 !important; 
+    color: white;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    background-color: white;
+}
+
+
+

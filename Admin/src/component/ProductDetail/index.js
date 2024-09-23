@@ -1,8 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 import { ProductContext } from '../Context/ProductContext';
-import HeaderComponent from '../HeaderAndFooter/HeaderComponent';
-import FooterComponent from '../HeaderAndFooter/FooterComponent';
 import ImageGallery from './ImageGallery';
 import UpdateModal from '../Modal/UpdateModal';
 import DeleteModal from '../Modal/DeleteModal';
@@ -23,11 +21,13 @@ const ProductDetail = () => {
         const fetchProductDetail = (id) => {
             const foundProduct = products.find(p => p._id.$oid === id);
             setProduct(foundProduct);
+            setLoading(false); // Chỉ dừng loading sau khi tìm sản phẩm
         };
 
         if (products.length > 0) {
             fetchProductDetail(productId);
-            setLoading(false)
+        } else {
+            setLoading(true); // Đảm bảo loading đúng nếu chưa có sản phẩm
         }
     }, [productId, products]); // Tải lại chi tiết sản phẩm khi sản phẩm hoặc trạng thái tải thay đổi
 
@@ -42,23 +42,29 @@ const ProductDetail = () => {
         setProduct(null);
     };
 
+    if (loading) {
+        return (
+            <div className='spinner-container'>
+                <div className='spinner-border'></div>
+            </div>
+        );
+    }
 
     if (!product) {
         return (
-            <div className="container">
-                <div className='not_found'>
-                    <h2>Product not found</h2>
-                    <button className="btn btn-primary" onClick={() => navigate('/admin/product')}>
-                        Go back to Product Management
-                    </button>
-                </div>
+            <div className="container not-found-container">
+                <h1 className="not-found-title">404</h1>
+                <h4 className="not-found-subtitle">Page not found</h4>
+                <button className="btn btn-primary not-found-button" onClick={() => navigate('/admin/product')}>
+                    Back to Product Management
+                </button>
             </div>
         );
     }
 
     const handleUpdateProduct = (updatedProduct) => {
-        updateProduct(updatedProduct); 
-        setProduct(updatedProduct);    
+        updateProduct(updatedProduct);
+        setProduct(updatedProduct);
     };
 
 
@@ -67,46 +73,38 @@ const ProductDetail = () => {
     };
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent />
-            {loading ? (
-                <div className='spinner-container'>
-                    <div className='spinner-border'></div>
-                </div>
-            ) : (
-                <div className='container mb-4'>
-                    <div className='row'>
-                        <div className='col-md-6'>
-                            <ImageGallery
-                                img1={product.img1}
-                                img2={product.img2}
-                                img3={product.img3}
-                                img4={product.img4}
-                            />
-                        </div>
-                        <div className='col-md-6'>
-                            <h2>{product.name}</h2>
-                            <p>{new Intl.NumberFormat('vi-VN').format(product.price)} VND</p>
-                            <p>{product.short_desc}</p>
-                            <div className="quantity pb-3">
-                                <p><strong>Quantity:</strong> {product.quantity}</p>
-                            </div>
-                            <button className="btn btn-dark btn-block" onClick={() => setShowUpdateModal(true)}>Update Product</button>
-                            <button className="btn btn-danger btn-block mt-2" onClick={handleDeleteProduct}>Delete Product</button>
-                        </div>
+        <>
+            <div className='container mb-4'>
+                <div className='row'>
+                    <div className='col-md-6'>
+                        <ImageGallery
+                            img1={product.img1}
+                            img2={product.img2}
+                            img3={product.img3}
+                            img4={product.img4}
+                        />
                     </div>
-                    <div className='description pt-5 pb-5'>
-                        <button className='btn btn-dark btn-block' onClick={toggleDescription}>Description</button>
-                        {showDescription && (
-                            <div className="product-description pt-2">
-                                <h2>Product Description</h2>
-                                <p>{product.long_desc}</p>
-                            </div>
-                        )}
+                    <div className='col-md-6'>
+                        <h2>{product.name}</h2>
+                        <p>{new Intl.NumberFormat('vi-VN').format(product.price)} VND</p>
+                        <p>{product.short_desc}</p>
+                        <div className="quantity pb-3">
+                            <p><strong>Quantity:</strong> {product.quantity}</p>
+                        </div>
+                        <button className="btn btn-dark btn-block" onClick={() => setShowUpdateModal(true)}>Update Product</button>
+                        <button className="btn btn-danger btn-block mt-2" onClick={handleDeleteProduct}>Delete Product</button>
                     </div>
                 </div>
-            )}
-            <FooterComponent />
+                <div className='description pt-5 pb-5'>
+                    <button className='btn btn-dark btn-block' onClick={toggleDescription}>Description</button>
+                    {showDescription && (
+                        <div className="product-description pt-2">
+                            <h2>Product Description</h2>
+                            <p>{product.long_desc}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
 
             <UpdateModal
                 show={showUpdateModal}
@@ -117,12 +115,12 @@ const ProductDetail = () => {
 
             <DeleteModal
                 show={showDeleteModal}
-                handleClose={() => setShowDeleteModal(false)}  
+                handleClose={() => setShowDeleteModal(false)}
                 product={product}
-                onDeleteProduct={confirmDelete}  
+                onDeleteProduct={confirmDelete}
             ></DeleteModal>
+        </>
 
-        </div>
     );
 };
 

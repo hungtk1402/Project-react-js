@@ -53,3 +53,11 @@
 }
 
 
+.disabled-link {
+    pointer-events: none;
+    /* Vô hiệu hóa sự kiện nhấp chuột */
+    opacity: 0.5;
+    /* Làm mờ nút */
+    cursor: not-allowed;
+    /* Thay đổi con trỏ khi di chuột vào */
+}

@@ -1,14 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { ProductContext } from '../Context/ProductContext';
 import './ProductManagement.css'
-import HeaderComponent from "../HeaderAndFooter/HeaderComponent"
-import FooterComponent from '../HeaderAndFooter/FooterComponent';
-import NavbarComponent from "../NavbarComponent"
 import SearchBar from "../SearchBar"
 import ListProduct from "./ListProduct"
 import AddModal from '../Modal/AddModal';
 
-const ProductManagenment = () => {
+const ProductManagement = () => {
     const { products, updateProduct, deleteProduct, addProduct } = useContext(ProductContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [showAddModal, setShowAddModal] = useState(false);
@@ -45,31 +42,22 @@ const ProductManagenment = () => {
 
     return (
         <>
-            <HeaderComponent></HeaderComponent>
-            <div className="row">
-                <div className='col-sm-2'>
-                    <NavbarComponent></NavbarComponent>
+            <div className='container'>
+                <h2 className="text-center mb-4">Product management</h2>
+                <SearchBar onSearch={handleSearch} placeholder="Search product..." />
+                <div className='add_product'>
+                    <button className="btn btn_add mb-4" onClick={() => setShowAddModal(true)} >
+                        Add product
+                    </button>
                 </div>
-                <div className="col-sm-10">
-                    <div className='container'>
-                        <h2 className="text-center mb-4">Product management</h2>
-                        <SearchBar onSearch={handleSearch} placeholder="Search product..." />
-                        <div className='add_product'>
-                            <button className="btn btn_add mb-4" onClick={() => setShowAddModal(true)} >
-                                Add product
-                            </button>
-                        </div>
-                        {loading ? (
-                            <div className='spinner-container'>
-                                <div className='spinner-border'></div>
-                            </div>
-                        ) : (
-                            <ListProduct products={filteredProducts} onUpdate={updateProduct} onDelete={deleteProduct} />
-                        )}
+                {loading ? (
+                    <div className='spinner-container'>
+                        <div className='spinner-border'></div>
                     </div>
-                </div>
+                ) : (
+                    <ListProduct products={filteredProducts} onUpdate={updateProduct} onDelete={deleteProduct} />
+                )}
             </div>
-            <FooterComponent></FooterComponent>
             <AddModal
                 show={showAddModal}
                 handleClose={() => setShowAddModal(false)}
@@ -79,4 +67,4 @@ const ProductManagenment = () => {
     )
 }
 
-export default ProductManagenment
+export default ProductManagement

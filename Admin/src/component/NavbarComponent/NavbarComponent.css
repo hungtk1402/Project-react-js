@@ -38,9 +38,21 @@
 }
 
 /* Responsive adjustments */
+.admin-tab {
+    position: fixed;
+    margin-top: 55px;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    z-index: 1000;
+}
+
 @media (max-width: 768px) {
     .admin-tab {
-        width: 100%;
         padding: 10px;
     }
 }
