@@ -41,7 +41,7 @@ const SignUpAdmin = () => {
     return (
         <div className='loginComponent'>
             <div className="form-container text-center">
-                <h2>Admin Sign Up</h2>
+                <h2 className='title_login'>Admin Sign Up</h2>
                 <form onSubmit={handleSignUp}>
                     <div className="form-group">
                         <input type="text" className="form-control" placeholder="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />

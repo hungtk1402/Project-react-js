@@ -28,7 +28,6 @@ const SignInForm = () => {
 
     return (
         <div className='loginComponent'>
-            <div ></div>
             <div className="form-container text-center">
                 <h2 className='title_login'>Sign In</h2>
                 <form onSubmit={handleSignIn}>
@@ -40,7 +39,6 @@ const SignInForm = () => {
                     </div>
                     <button type="submit" className="btn btn-dark btn-block">Sign In</button>
                 </form>
-                {/* <p className="mt-3">Don't have an account? <button onClick={() => toggleForm('signup')}>Sign up</button></p> */}
                 <p className="mt-3">Don't have an account? <Link to="/signup">Sign up</Link></p>
             </div>
         </div>

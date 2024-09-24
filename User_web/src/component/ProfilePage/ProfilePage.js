@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../Context/UserContext';
 import './ProfilePage.css'
-import HeaderComponent from '../HeaderAndFooter/HeaderComponent';
-import FooterComponent from '../HeaderAndFooter/FooterComponent';
 import ProfileTab from './ProfileTab';
 import ProfileUser from './ProfileUser';
 import EditProfileForm from './EditProfile';
@@ -57,8 +55,7 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent></HeaderComponent>
+        <>
             <div className="container mt-5 pb-5">
                 <div className="row">
                     <div className="col-md-3">
@@ -93,8 +90,7 @@ const ProfilePage = () => {
                     </div>
                 </div>
             </div>
-            <FooterComponent></FooterComponent>
-        </div>
+        </>
     );
 };
 

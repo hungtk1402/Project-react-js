@@ -1,8 +1,6 @@
 import Banner1 from '../../img/banner1.jpg'
 import Banner2 from '../../img/banner2.jpg'
 import Banner3 from '../../img/banner3.jpg'
-import HeaderComponent from '../HeaderAndFooter/HeaderComponent'
-import FooterComponent from '../HeaderAndFooter/FooterComponent'
 import CardComponent from './cardComponent/CardComponent'
 import ProductList from './ProductList/ProductList'
 import BannerCarousel from './BannerCarousel'
@@ -42,8 +40,7 @@ const HomePage = () => {
     ];
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent></HeaderComponent>
+        <>
             <BannerCarousel banners={banners} />
             <div className="container mt-2 mb-4">
                 <h6 className="text-center mt-5">Carefully Created Collections</h6>
@@ -52,8 +49,7 @@ const HomePage = () => {
                 <ProductList />
                 <InfoSection></InfoSection>
             </div>
-            <FooterComponent></FooterComponent>
-        </div>
+        </>
     )
 }
 export default HomePage

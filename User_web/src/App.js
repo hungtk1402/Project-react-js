@@ -1,18 +1,23 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useContext } from 'react';
 import { UserContext } from './component/Context/UserContext/index'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import ShopPage from './component/shopPage/shopPage';
+
 import SignInForm from './component/SignInForm/index'
 import SignUpForm from './component/SignUpForm/index'
-import ProductDetail from './component/ProductDetail';
+
+import HeaderComponent from './component/HeaderAndFooter/HeaderComponent';
+import FooterComponent from './component/HeaderAndFooter/FooterComponent';
+
 import HomePage from './component/Homepage';
+import ShopPage from './component/shopPage/shopPage';
+import ProductDetail from './component/ProductDetail';
 import CartPage from './component/CartPage';
 import CheckoutPage from './component/CheckOutPage';
-import ProfilePage from './component/ProfilePage/ProfilePage';
 import ContactPage from './component/ContactPage/ContactPage';
+import ProfilePage from './component/ProfilePage/ProfilePage';
 
 function App() {
   const { user } = useContext(UserContext);
@@ -21,7 +26,8 @@ function App() {
   if (user) {
     return (
       <>
-        <div className="App">
+        <div className="container-fluid">
+          <HeaderComponent/>
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/shop' element={<ShopPage />} />
@@ -32,6 +38,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
+          <FooterComponent/>
         </div>
       </>
     );
@@ -39,7 +46,7 @@ function App() {
 
   // Nếu chưa đăng nhập, chỉ hiển thị trang đăng nhập và đăng ký
   return (
-    <div className="App">
+    <div className="container-fluid">
       <Routes>
         <Route path="/signin" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />

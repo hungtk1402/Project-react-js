@@ -2,8 +2,6 @@ import { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { UserContext } from '../Context/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
-import HeaderComponent from '../HeaderAndFooter/HeaderComponent';
-import FooterComponent from '../HeaderAndFooter/FooterComponent';
 import './CheckOut.css'
 import CheckoutForm from './CheckoutForm';
 import OrderSummary from './OrderSummary';
@@ -68,8 +66,7 @@ const CheckoutPage = () => {
     };
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent />
+        <>
             <div className="container checkout-container">
                 <div className="checkout-header">
                     <h2>CHECKOUT</h2>
@@ -108,8 +105,7 @@ const CheckoutPage = () => {
                 confirmOrder={confirmOrder}
                 setShowConfirmation={setShowConfirmation}
             />
-            <FooterComponent></FooterComponent>
-        </div>
+        </>
     );
 };
 

@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AdminContext } from './component/Context/AdminContext'

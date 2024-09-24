@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { Link } from 'react-router-dom';
-import HeaderComponent from '../HeaderAndFooter/HeaderComponent';
-import FooterComponent from '../HeaderAndFooter/FooterComponent';
 import "./CartPage.css"
 
 const CartPage = () => {
@@ -12,11 +10,9 @@ const CartPage = () => {
 
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent />
+        <>
             <div className="container cart-container">
                 <h1 className="cart-header">Cart</h1>
-
                 <div className='row'>
                     {cart.length === 0 ? (
                         <div className="col-sm-8">
@@ -100,8 +96,7 @@ const CartPage = () => {
                     </div>
                 </div>
             </div>
-            <FooterComponent />
-        </div>
+        </>
     );
 };
 

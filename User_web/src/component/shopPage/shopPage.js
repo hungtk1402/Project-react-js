@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import HeaderComponent from "../HeaderAndFooter/HeaderComponent"
-import FooterComponent from "../HeaderAndFooter/FooterComponent"
 import NavbarShopPage from "./NavBar"
 import CardGirdShopPage from './CardGirdShopPage';
 import SearchBar from '../SearchBar';
@@ -21,7 +19,7 @@ const ShopPage = () => {
     );
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [sortOrder, setSortOrder] = useState('default'); 
+    const [sortOrder, setSortOrder] = useState('default');
 
     const location = useLocation();
 
@@ -43,7 +41,7 @@ const ShopPage = () => {
     }, [location.search]);
 
     const handleSearch = (query) => {
-        setSearchQuery(query.toLowerCase()); 
+        setSearchQuery(query.toLowerCase());
     };
 
     const handleCategoryChange = (selectedCategory) => {
@@ -56,11 +54,11 @@ const ShopPage = () => {
         setSortOrder(e.target.value);
     };
 
-    
+
     const filteredProducts = products
         .filter(product => {
             const matchesCategory = category === 'All' || product.category === category;
-            
+
             const matchesSearchQuery = product.name.toLowerCase().includes(searchQuery);
             return matchesCategory && matchesSearchQuery;
         })
@@ -76,8 +74,7 @@ const ShopPage = () => {
 
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent></HeaderComponent>
+        <>
             <div className='container mb-4 mt-4'>
                 <div className='row'>
                     <NavbarShopPage setCategory={handleCategoryChange} />
@@ -102,8 +99,7 @@ const ShopPage = () => {
                     </div>
                 </div>
             </div>
-            <FooterComponent></FooterComponent>
-        </div>
+        </>
     )
 }
 export default ShopPage

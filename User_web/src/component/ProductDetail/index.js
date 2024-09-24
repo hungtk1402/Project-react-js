@@ -1,8 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../Context/CartContext/index'
-import HeaderComponent from '../HeaderAndFooter/HeaderComponent';
-import FooterComponent from '../HeaderAndFooter/FooterComponent';
 import CardGirdShopPage from '../shopPage/CardGirdShopPage';
 import ImageGallery from './ImageGallery';
 
@@ -33,7 +31,7 @@ const ProductDetail = () => {
             });
     }, [productId]);
 
-   
+
 
     // Hàm để xử lý việc hiển thị mô tả
     const toggleDescription = () => {
@@ -47,8 +45,7 @@ const ProductDetail = () => {
     };
 
     return (
-        <div className="container-fluid">
-            <HeaderComponent />
+        <>
             {loading ? (
                 <div className='spinner-container'>
                     <div className='spinner-border'></div>
@@ -89,8 +86,7 @@ const ProductDetail = () => {
                     <CardGirdShopPage products={relatedProducts} />
                 </div>
             </div>)}
-            <FooterComponent />
-        </div>
+        </>
     );
 };
 
