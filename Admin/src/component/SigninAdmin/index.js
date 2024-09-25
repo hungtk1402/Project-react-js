@@ -7,13 +7,16 @@ import { Link } from 'react-router-dom';
 const SignInAdmin = ({ setIsAuthenticated }) => {
     const [employeeId, setEmployeeId] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [messageType, setMessageType] = useState('');
     const { login } = useContext(AdminContext);  // Context đăng nhập cho admin
     const navigate = useNavigate();
 
     const handleSignIn = (e) => {
         e.preventDefault();
         if (!employeeId || !password) {
-            alert('Vui lòng nhập thông tin tài khoản');
+            setMessage('Vui lòng nhập thông tin tài khoản');
+            setMessageType('error');
             return;
         }
 
@@ -23,7 +26,8 @@ const SignInAdmin = ({ setIsAuthenticated }) => {
             login(admin);
             navigate('/admin');  // Điều hướng đến trang admin sau khi đăng nhập thành công
         } else {
-            alert('Mã nhân viên hoặc mật khẩu không đúng');
+            setMessage('Mã nhân viên hoặc mật khẩu không đúng');
+            setMessageType('error');
         }
     };
 
@@ -31,6 +35,11 @@ const SignInAdmin = ({ setIsAuthenticated }) => {
         <div className='loginComponent'>
             <div className="form-container text-center">
                 <h2 className='title_login'>Admin Sign In</h2>
+                {message && (
+                    <div className={`alert alert-${messageType === 'success' ? 'success' : 'danger'}`}>
+                        {message}
+                    </div>
+                )}
                 <form onSubmit={handleSignIn}>
                     <div className="form-group">
                         <input type="text" className="form-control" placeholder="Employee ID" value={employeeId} onChange={(e) => setEmployeeId(e.target.value)} />

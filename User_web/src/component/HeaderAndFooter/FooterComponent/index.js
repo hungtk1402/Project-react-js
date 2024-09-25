@@ -4,7 +4,7 @@ const footerData = [
     {
         title: "CUSTOMER SERVICES",
         links: [
-            { href: "#", label: "Help & Contact Us" },
+            { href: "/contact", label: "Help & Contact Us" },
             { href: "#", label: "Returns & Refunds" },
             { href: "#", label: "Online Stores" },
             { href: "#", label: "Terms & Conditions" },

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../Context/UserContext';
 import './ProfilePage.css'
 import ProfileTab from './ProfileTab';
@@ -15,6 +15,11 @@ const ProfilePage = () => {
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState('');
 
+    // Reset message khi chuyển tab
+    useEffect(() => {
+        setMessage('');
+        setMessageType('');
+    }, [activeTab]);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];

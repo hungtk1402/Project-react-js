@@ -6,13 +6,16 @@ import { useNavigate, Link } from 'react-router-dom';
 const SignInForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [messageType, setMessageType] = useState('');
     const { login } = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleSignIn = (e) => {
         e.preventDefault();
         if (!email || !password) {
-            alert('Vui lòng nhập thông tin tài khoản');
+            setMessage('Vui lòng nhập thông tin tài khoản');
+            setMessageType('error');
             return;
         }
 
@@ -22,7 +25,8 @@ const SignInForm = () => {
             login(user);
             navigate('/');
         } else {
-            alert('Tài khoản hoặc mật khẩu không đúng');
+            setMessage('Tài khoản hoặc mật khẩu không đúng');
+            setMessageType('error');
         }
     };
 
@@ -30,6 +34,11 @@ const SignInForm = () => {
         <div className='loginComponent'>
             <div className="form-container text-center">
                 <h2 className='title_login'>Sign In</h2>
+                {message && (
+                    <div className={`alert alert-${messageType === 'success' ? 'success' : 'danger'}`}>
+                        {message}
+                    </div>
+                )}
                 <form onSubmit={handleSignIn}>
                     <div className="form-group">
                         <input type="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />

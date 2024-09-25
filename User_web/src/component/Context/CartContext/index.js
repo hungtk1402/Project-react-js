@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 
@@ -6,7 +6,14 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const { user, logout } = useContext(UserContext);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        if (user) {
+            const storedCart = localStorage.getItem(`cart_${user.email}`);
+            return storedCart ? JSON.parse(storedCart) : [];
+        } else {
+            return [];
+        }
+    });
 
     console.log('user', user);
 
@@ -78,7 +85,7 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ cart,setCart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, handleLogout }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, handleLogout }}>
             {children}
         </CartContext.Provider>
     );

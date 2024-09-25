@@ -17,7 +17,6 @@ const EditProfileForm = ({
 
     const labelProfile = [
         { label: "Full Name", name: "name" },
-        { label: "About", name: "about", type: "textarea" },
         { label: "Company", name: "company" },
         { label: "Job", name: "job" },
         { label: "Country", name: "country" },
